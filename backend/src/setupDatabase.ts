@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-
+import { config } from "./config";
 export default () => {
 	const connect = () => {
-		mongoose.connect("mongodb://localhost:27017/chattyapp-backend")
+		mongoose.connect(`${config.DataBase_URL}`)
                 .then(() => {
-		console.log("Successfully connected to database")
+			console.log("Successfully connected to database")
 	})
 	.catch((error) => {
-		console.log("Error connection to database");
+		console.log(error);
 		return process.exit(1); 
 	});
 };
